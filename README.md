@@ -1,6 +1,6 @@
 # Jump-to-Python
 
-Day 1
+###Day 1
 
 ●문자열 자료형
 
