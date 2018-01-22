@@ -347,3 +347,72 @@ continue를 활용해서 for문 시작으로 다시 돌아갈수 있음.
         짝수에 3 곱하기
             a = [1, 2, 3, 4]
             result = [num * 3 for num in a if num % 2 == 0]            
+
+# 함수
+
+        def 함수명(입력 인수):
+            수행할 문장1
+            수행할 문장2
+
+# 사용자 입력과 출력
+
+  ● input
+    
+        text = input("명언을 입력하세요 >>>>>")
+    
+  ● print
+
+        1. 큰따옴표(")로 둘러싸인 문자열은 + 연산과 동일하다
+        2. 문자열 띄어쓰기는 콤마로 한다        
+        3. 한 줄에 결과값 출력하기 - print(x, end=' ')
+        
+# 파일 읽고 쓰기
+
+  ● 파일 생성하고 출력값 적기
+    
+        f = open("D:/python/새파일.txt", 'w')
+        for i in range(1, 11)
+            data = "%d번째 줄입니다.\n" % i
+            f.write(data)
+        f.close()
+    
+    
+  ● 저장된 파일 읽기
+        
+      1. readline() - 한줄 출력
+        
+        f = open("C:/Python/새파일.txt", 'r')
+        while True:
+            line = f.readline()
+            if not line: break
+            print(line)
+        f.close()
+        
+      2. readlines() # list 라인으로 출력
+        
+        f = open("C:/Python/새파일.txt", 'r')
+        while True:
+        line = f.readlines()
+        for line in lines:
+            print(line)
+        f.close()
+        
+      3. read 함수 이용하기
+        
+        f = open("C:/Python/새파일.txt", 'r')
+        data = f.read()
+        print(data)
+        f.close()
+        
+  ● 파일에 새로운 내용 추가하기
+
+        f = open("C:/Python/새파일.txt",'a')
+        for i in range(11, 20):
+            data = "%d번째 줄입니다.\n" % i
+            f.write(data)
+        f.close()
+  
+  ● with문과 사용
+    
+        with open("foo.txt", "w") as f:
+        f.write("Life is too short, you need python")
