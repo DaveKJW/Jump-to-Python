@@ -419,7 +419,7 @@ continue를 활용해서 for문 시작으로 다시 돌아갈수 있음.
 
 # 클래스
 
-    ● 클래스 기본
+  ● 클래스 기본
 
         class Calculator:
             def __init__(self):
@@ -443,7 +443,7 @@ continue를 활용해서 for문 시작으로 다시 돌아갈수 있음.
         print(cal2.adder(7))
         print(cal2.sub(3))
 
-    ● 사칙연산 계산기
+  ● 사칙연산 계산기
 
         class FourCal:
             def __init__(self, first, second): #생성자
@@ -470,7 +470,7 @@ continue를 활용해서 for문 시작으로 다시 돌아갈수 있음.
         print(a.second)
         print(a.sum(), a.mul(), a.sub(), a.div())
 
-    ● 상속
+  ● 상속
 
         class MoreFourCal(FourCal):
             def pow(self):
@@ -479,8 +479,9 @@ continue를 활용해서 for문 시작으로 다시 돌아갈수 있음.
 
         a = MoreFourCal(4, 2)
         print(a.pow())
+  상속은 MoreFourCal 클래스처럼 기존 클래스(FourCal)는 그대로 놔둔채로 클래스의 기능을 확장시키고자 할 때 주로 사용
 
-    ● 오버라이딩
+  ● 오버라이딩
 
         class SafeFourCal(FourCal):
             def div(self):
