@@ -1,0 +1,101 @@
+# Linear Algebra
+    
+from functools import reduce
+import math
+
+#vector 더하기
+  
+def vector_add(v, w):
+    return [v_i + w_i
+        for v_i, w_i in zip(v, w)]
+
+#vector 빼기
+  
+def vector_subtract(v, w):
+    return [v_i - w_i
+            for v_i, w_i in zip(v, w)]
+
+# vector 모든 값합계
+  
+def vector_sum(vectors):
+    result = vectors[0]
+    for vector in vectors[1:]:
+        result = vector_add(result, vector)
+    return result
+
+# vector 합계(간단하게)
+  
+def vector_sum2(vectors):
+    return reduce(vector_add, vectors)
+
+# scalar 곱셈
+  
+def scalar_multiply(c, v):
+    """c는 숫자, v는 벡터"""
+    return [c * v_i for _, v_i in v]
+
+# vector 성분별 평균
+  
+def vector_mean(vectors):
+    n = len(vectors)
+    return scalar_multiply(1/n, vector_sum(vectors))
+
+# vector의 내적
+  
+def dot(v, w):
+    """v_1 * w_1 + ... + v_n * w_n"""
+    return sum(v_i * w_i for v_i, w_i in zip(v, w))
+
+# vector의 제곱합
+  
+def sum_of_squares(v):
+    return dot(v, v)
+
+# 벡터의 크기
+  
+def magnitude(v):
+    return math.sqrt(sum_of_squares(v))
+
+# 벡터 간의 거리
+  
+def squared_distance(v, w):
+    return sum_of_squares(vector_subtract(v, w))
+
+def distance(v, w): # 제곱근
+    return math.sqrt(squared_distance(v, w))
+def distance(v, w): # 깔끔하게 표현
+    return magnitude(vector_subtract(v,w))
+
+
+# 행렬 형태
+  
+A = [[1, 2, 3],
+     [4, 5, 6]]
+B = [[1, 2],
+     [3, 4],
+     [5, 6]]
+
+def shape(A):
+    num_row = len(A)
+    num_cols = len(A[0]) if A else 0
+    return num_row, num_cols
+
+def get_row(A, i):
+    return A[i]
+
+def get_cols(A, j):
+    return [A_i[j]
+            for A_i in A]
+# 행렬 생성
+  
+def make_matrix(num_row, num_cols, entry_fn):
+    return [[entry_fn(i, j)
+             for j in range(num_cols)
+             for i in range(num_row)]]
+
+# 대각선 값이 1이고 나머지 0인 5x5행렬
+
+def is_diagonal(i, j):
+    return 1 if i == j else 0
+
+identity_matrix = make_matrix(5, 5, is_diagonal)
