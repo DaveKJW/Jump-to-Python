@@ -493,3 +493,99 @@ continue를 활용해서 for문 시작으로 다시 돌아갈수 있음.
         a = SafeFourCal(4, 0)
         print(a.div())
   부모 클래스(상속한 클래스)에 있는 메서드를 동일한 이름으로 다시 만드는 것을 메서드 오버라이딩(Overriding, 덮어쓰기)이라고 한다. 이렇게 메서드를     오버라이딩하면 부모 클래스의 메서드 대신 오버라이딩한 메서드가 호출된다.
+  
+# 예제 
+ 
+  1. 3과 5의 배수 합하기
+  
+    #1000미만의 자연수
+    
+    result = 0
+    for i in range(1000):
+        if i % 3 == 0:
+            result += i
+        elif i % 5 == 0:
+            result += i
+    print(result)
+
+    #다른 풀이
+
+    result = 0
+    for n in range(1, 1000):
+        if n % 3 == 0 or n % 5 == 0:
+            result += n
+    print(result)
+
+  2. 게시판 페이징하기
+
+    def GetPageTool(i, j):
+        if i % j == 0:
+            page = (i // j)
+        else:
+            page = (i // j) + 1
+        return "필요한 페이지는 {0}page입니다.".format(page)
+    print(GetPageTool(32,10))
+
+  3. 간단한 메모장 만들기
+  
+    # C:/Python/memo.py
+    import sys
+
+    option = sys.argv[1]
+
+    if option == '-a':
+        memo = sys.argv[2]
+        f = open('memo.txt', 'a')
+        f.write(memo)
+        f.write('\n')
+        f.close()
+    # C:/Python>python memo.py -a "Life is too short"
+
+    elif option == '-v':
+        f = open('memo.txt')
+        memo = f.read()
+        f.close()
+    # C:/Python>python memo.py -v
+
+  4. 탭을 공백 4개로 바꾸기
+
+    # C:/Python/tabto4.py
+
+    import sys
+
+    src = sys.argv[1]
+    dst = sys.argv[2]
+
+    f = open(src)
+    tab_content = f.read()
+    f.close()
+
+    space_content = tab_content.replace('\t', ' ' * 4)
+
+    f = open(dst, 'w')
+    f.write(space_content)
+    f.close()
+
+    #C:\Python>python tabto4.py a.txt b.txt
+
+  5. 하위 디렉터리 검색하기
+  
+    # C:/Python/sub_dir_search.py
+
+    import os
+
+    def search(dirname):
+        try:
+            filenames = os.listdir(dirname)
+            for filename in filenames:
+                full_filename = os.path.join(dirname, filename)
+                if os.path.isdir(full_filename):
+                    search(full_filename)
+                else:
+                    ext = os.path.splitext(full_filename)[-1]
+                    if ext == ".py":
+                        print(full_filename)
+        except PermissionError:
+            pass
+
+    search("c:/")
